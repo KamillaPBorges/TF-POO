@@ -10,4 +10,16 @@ public class Pessoa {
         this.maxHrs = maxHrs;
     }
 
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public int getMaxHrs() {
+        return maxHrs;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
 }
