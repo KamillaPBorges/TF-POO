@@ -30,10 +30,13 @@ public class Disciplina {
     public void alocarProfessores() {
         for (Turma turma : turmas) {
             if (turma.getProfessores().isEmpty()) { // se a turma nao tiver professsor
-                contratarProfessor();  //chama o metodo para contratar o professor.. tem q fazer 
+                contratarProfessor(); // tem q contrar professor
             }
         }
     }
 
-
+    private void contratarProfessor() {
+        // alocar um professr numa turma
+        // if tiver alunos pode contratar
+    }
 }
