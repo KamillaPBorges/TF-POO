@@ -1,42 +1,52 @@
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Disciplina {
-    ;
-    private String nome;
-    private int maxAlunos;
-    private int horasAulaSemana;
-    private List<Professor> professores;
-    private List<Turma> turmas;
+    protected int id;
+    protected String nome;
+    protected String descricao;
+    protected int maxAlunos;
+    protected int cargaHoraria;
+    protected Materias materiaReq; // materia requerida
 
-    public Disciplina(String nome, int maxAlunos, int horasAulaSemana) {
+    public Disciplina(int id, String nome, String descricao, int maxAlunos, int cargaHoraria, Materias materiaReq) {
+        this.id = id;
         this.nome = nome;
+        this.descricao = descricao;
         this.maxAlunos = maxAlunos;
-        this.horasAulaSemana = horasAulaSemana;
-        this.professores = new ArrayList<>();
-        this.turmas = new ArrayList<>();
+        this.cargaHoraria = cargaHoraria;
+        this.materiaReq = materiaReq;
     }
 
-    public void cadastrarTurma(int numAlunos) {
-        if (numAlunos < 0.2 * maxAlunos) { // se for menor que 20% da quantidade maxima de alunos
-            throw new IllegalArgumentException("A quantidade de alunos eh insuficiente para criar uma turma.");
-        }
-
-        Turma turma = new Turma(this, numAlunos);
-        turmas.add(turma);
+    public int getId() {
+        return id;
     }
 
-    public void alocarProfessores() {
-        for (Turma turma : turmas) {
-            if (turma.getProfessores().isEmpty()) { // se a turma nao tiver professsor
-                contratarProfessor(); // tem q contrar professor
-            }
-        }
+    public String getNome() {
+        return nome;
     }
 
-    private void contratarProfessor() {
-        // alocar um professr numa turma
-        // if tiver alunos pode contratar
+    public int getMaxAlunos() {
+        return maxAlunos;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public Materias getMateriaReq() {
+        return materiaReq;
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "Nome: " + nome;
+        s += "\nDescrição: " + descricao;
+        s += "\nMatrícula: " + id;
+        s += "\nCarga-horária: " + cargaHoraria;
+        s += "\nQuantidade máxima de alunos: " + maxAlunos;
+        return s;
     }
 }

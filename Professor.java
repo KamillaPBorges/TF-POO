@@ -1,19 +1,24 @@
+import java.util.ArrayList;
+
 public class Professor extends Pessoa {
-    private int horasAula;
+    private Materias materia;
+    private ArrayList<Turma> turmas;
 
-    public Professor(String nome, int matricula, int maxHrs) {
-        super(nome, matricula, maxHrs);
-        this.horasAula = 0;
-
+    public Professor(String nome, int matricula, Materias materia) {
+        super(nome, matricula, 12);
+        this.materia = materia;
+        turmas = null;
     }
 
-    public int getHorasAula() {
-        return horasAula;
+    // qual materia que ele leciona
+    public Materias getMateria() {
+        return materia;
     }
 
-    public void adicionarHorasAula(int horas) { // adiciona horas de aulas
-        this.horasAula += horas;
-    } /// da pra lancar uma excecao se passar o numero de horas possiveis para cada
-      /// professor
-
+    @Override
+    public String toString() {
+        String s = super.toString();
+        s += "\nMatéria: " + materia;
+        return s;
+    }
 }
