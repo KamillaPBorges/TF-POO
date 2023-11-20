@@ -1,3 +1,4 @@
+*//so se pode criar a disciplina se houver pelo menos 20 % do numero maximo de aluno
 public class Disciplina {
     protected int id;
     protected String nome;

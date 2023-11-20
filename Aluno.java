@@ -6,7 +6,9 @@ public class Aluno extends Pessoa {
 
     public Aluno(String nome, int matricula) {
         super(nome, matricula, 28); // 28 horas eh o numero maximo de aulas por aluno
-        disciplinas = null; // comeca sem materias
+        this.disciplinas = new ArrayList<>();
+        this.horasUsadas = 0;
+    }
 
     }
 
@@ -14,14 +16,15 @@ public class Aluno extends Pessoa {
         return disciplinas;
     }
 
-    public boolean addDisciplina(Disciplina disciplina) {
-        if (disciplina == null) {
-            return false;
+    public boolean addDisciplina(Disciplina disciplina) { //
+        // Adicione lógica para verificar a carga horária do aluno e se a disciplina já
+        // foi adicionada
+        if (horasUsadas + disciplina.getCargaHoraria() <= 28 && !disciplinas.contains(disciplina)) {
+            disciplinas.add(disciplina);
+            horasUsadas += disciplina.getCargaHoraria();
+            return true;
         }
-        if (disciplinas == null) { // se n tiver nenhuma disciplina
-            disciplinas = new ArrayList<>();
-        }
-        return disciplinas.add(disciplina);
+        return false;
     }
 
     public int contarDisciplinas() {
